@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install -y nginx certbot python3-certbot-nginx firewalld
+sudo apt install -y nginx certbot python3-certbot-nginx firewalld unzip
 
 sudo ufw disable
 sudo apt remove --purge -y ufw
