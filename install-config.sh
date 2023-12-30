@@ -11,4 +11,5 @@ sudo systemctl enable firewalld
 sudo firewall-cmd --add-service=ssh --permanent
 sudo firewall-cmd --add-service=http --permanent
 sudo firewall-cmd --add-service=https --permanent
+sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --reload
