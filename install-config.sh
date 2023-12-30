@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 apt install nginx certbot python3-certbot-nginx firewalld
 
