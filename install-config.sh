@@ -1,10 +1,10 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install nginx certbot python3-certbot-nginx firewalld
+sudo apt install -y nginx certbot python3-certbot-nginx firewalld
 
 sudo ufw disable
-sudo apt remove --purge ufw
+sudo apt remove --purge -y ufw
 
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
