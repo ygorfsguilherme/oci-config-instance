@@ -24,7 +24,9 @@ first_exec() {
         echo "Instalação de dependências concluída."
 
         echo "Download do script de configuração..."
-        curl -s -O https://github.com/ygorfsguilherme/oci-config-instance/archive/refs/heads/main.zip
+        mkdir ocpi
+        cd ocpi
+        wget -c https://github.com/ygorfsguilherme/oci-config-instance/archive/refs/heads/main.zip -O main.zip
         unzip main.zip -d opci
         
         touch exec
