@@ -1,89 +1,52 @@
 #!/bin/bash
 #
 #
-#
+# Script de configuração de instância OCI
+# Disponível para Ubuntu 22.04, preferencialmente a versão minimal
 #######################################################################################
-sudo apt update
-sudo apt install -y nginx certbot python3-certbot-nginx firewalld unzip
 
-sudo ufw disable
-sudo apt remove --purge -y ufw
+if [[ "$PWD" == */ocpi ]]; then
+    source ./menu_main.sh
+    echo "Está no diretório ocpi."
+else
+    source ./ocpi/menu_main.sh
+    echo "Não está no diretório ocpi."
+fi
 
-sudo systemctl start firewalld
-sudo systemctl enable firewalld
-sudo firewall-cmd --add-service=ssh --permanent
-sudo firewall-cmd --add-service=http --permanent
-sudo firewall-cmd --add-service=https --permanent
-sudo firewall-cmd --permanent --add-port=80/tcp
-sudo firewall-cmd --permanent --add-port=8080/tcp
-sudo firewall-cmd --reload
-
-#######################################################################################
-# Configurando Swap
-sudo dd if=/dev/zero of=/swapfile bs=1M count=4096
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-
-#######################################################################################
-# Diretório onde o arquivo HTML será criado
-dir="/var/www/html"
-
-# Nome do arquivo HTML
-html_file="index.html"
-
-# Conteúdo do arquivo HTML
-html_content=$(cat <<EOL
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World!</title>
-</head>
-<body>
-    <h1>Hello, World!</h1>
-</body>
-</html>
-EOL
-)
-
-# Cria o arquivo HTML
-echo "$html_content" | tee "$dir/$html_file" > /dev/null
-
-echo "Arquivo HTML gerado em: $dir/$html_file"
-
-
-# Nome do arquivo de configuração
-config_file="/etc/nginx/sites-available/server.conf"
-
-# Conteúdo do arquivo de configuração
-config_content=$(cat <<EOL
-server {
-    listen 80;
-    server_name meusite.com www.meusite.com;
-
-    location / {
-        root /var/www/html;
-        index index.html index.htm;
-    }
-
-    # Adicione mais configurações conforme necessário
+# Função para checar e instalar pacotes
+check_and_install() {
+    if ! dpkg -l | grep -q $1; then
+        sudo apt install -y $1
+    else
+        echo "$1 já está instalado."
+    fi
 }
-EOL
-)
 
-# Crie o arquivo de configuração
-echo "$config_content" | sudo tee "$config_file" > /dev/null
+first_exec() {
+    if [ ! -f exec ]; then
+        source ./menu_main.sh
+        sudo apt update -y
+        check_and_install unzip
+        check_and_install curl
+        check_and_install git
 
-# Crie um link simbólico para sites-enabled
-sudo ln -s "$config_file" "/etc/nginx/sites-enabled/"
+        echo "Instalação de dependências concluída."
 
-# Teste a configuração do Nginx
-sudo nginx -t
+        echo "Download do script de configuração..."
+        curl -s -O https://github.com/ygorfsguilherme/oci-config-instance/archive/refs/tags/0.0.1.zip
+        unzip 0.0.1.zip -d opci
+        
+        touch exec
+        touch ./opci/exec
+        to_continue
+    else
+        echo "Execução já realizada."
+    fi
+}
 
-# Recarregue o Nginx para aplicar as alterações
-sudo systemctl reload nginx
+first_exec
 
-
+# Início do loop
+while true; do
+    menu_main
+done
