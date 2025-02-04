@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Importa os scripts necessários
 source ./banner.sh
 

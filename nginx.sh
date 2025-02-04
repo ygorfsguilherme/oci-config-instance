@@ -1,5 +1,4 @@
-
-
+#!/bin/bash
 
 configure_nginx(){
     echo "Instalando Nginx..."

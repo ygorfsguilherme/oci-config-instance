@@ -1,10 +1,15 @@
+#!/bin/bash
+
 # Importa os scripts necessários
-source ./firewalld.sh
-source ./ssl.sh
-source ./show_menu.sh
-source ./nginx.sh
-source ./swap.sh
-source ./banner.sh
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "$DIR/firewalld.sh"
+source "$DIR/ssl.sh"
+source "$DIR/show_menu.sh"
+source "$DIR/nginx.sh"
+source "$DIR/swap.sh"
+source "$DIR/banner.sh"
+
 
 to_continue() {
     read -n 1 -p "Pressione Enter para continuar..." enter

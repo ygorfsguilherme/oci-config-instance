@@ -1,3 +1,5 @@
+#!/bin/bash
+# Description: Script para configurar, desabilitar e remover swap
 install_ssl(){
     sudo apt update -y
     sudo apt install -y certbot python3-certbot-nginx
