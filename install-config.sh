@@ -5,6 +5,8 @@
 # Disponível para Ubuntu 22.04, preferencialmente a versão minimal
 #######################################################################################
 
+
+
 # Função para checar e instalar pacotes
 check_and_install() {
     if ! dpkg -l | grep -q $1; then
@@ -31,7 +33,9 @@ first_exec() {
         
         touch exec
         touch ./opci/exec
+        source ./menu_main.sh
         to_continue
+        
     else
         echo "Execução já realizada."
     fi
@@ -40,13 +44,13 @@ first_exec() {
 first_exec
 
 
-if [[ "$PWD" == */ocpi ]]; then
-    source ./ocpi/menu_main.sh
-    echo "Está no diretório ocpi."
-else
-    source ./menu_main.sh
-    echo "Não está no diretório ocpi."
-fi
+# if [[ "$PWD" == */ocpi ]]; then
+#     source ./ocpi/menu_main.sh
+#     echo "Está no diretório ocpi."
+# else
+    
+#     echo "Não está no diretório ocpi."
+# fi
 
 # Início do loop
 while true; do
