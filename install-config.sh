@@ -5,7 +5,7 @@
 # Disponível para Ubuntu 22.04, preferencialmente a versão minimal
 #######################################################################################
 
-
+source ./menu_main.sh
 
 # Função para checar e instalar pacotes
 check_and_install() {
@@ -32,8 +32,6 @@ first_exec() {
         unzip -j main.zip
         
         touch exec
-        touch ./opci/exec
-        source ./menu_main.sh
         to_continue
         
     else
