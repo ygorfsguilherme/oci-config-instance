@@ -27,7 +27,7 @@ first_exec() {
         mkdir ocpi
         cd ocpi
         wget -c https://github.com/ygorfsguilherme/oci-config-instance/archive/refs/heads/main.zip -O main.zip
-        unzip main.zip -d opci
+        unzip -j main.zip
         
         touch exec
         touch ./opci/exec
