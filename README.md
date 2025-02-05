@@ -8,10 +8,7 @@ Principais funcionalidades:
 - Interface amigável, intuitiva e leve
 
 Para começar a usar, execute os comandos abaixo:
-````bash
-mkdir ocpic && cd ocpic
-````
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ygorfsguilherme/oci-config-instance/main/install-config.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/ygorfsguilherme/oci-config-instance/main/install-config.sh | bash
 ```

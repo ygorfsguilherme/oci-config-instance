@@ -8,7 +8,6 @@ source ./nginx.sh
 source ./swap.sh
 source ./banner.sh
 
-
 to_continue() {
     read -n 1 -p "Pressione Enter para continuar..." enter
 }

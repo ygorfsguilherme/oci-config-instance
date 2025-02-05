@@ -31,7 +31,8 @@ first_exec() {
         unzip -j main.zip
         
         touch exec
-        to_continue
+        sleep 5
+        read -n 1 -p "Pressione Enter para continuar..." enter
         
     else
         echo "Execução já realizada."
@@ -39,15 +40,6 @@ first_exec() {
 }
 
 first_exec
-
-
-# if [[ "$PWD" == */ocpi ]]; then
-#     source ./ocpi/menu_main.sh
-#     echo "Está no diretório ocpi."
-# else
-    
-#     echo "Não está no diretório ocpi."
-# fi
 
 source ./menu_main.sh
 # Início do loop
