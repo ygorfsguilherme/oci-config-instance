@@ -37,7 +37,7 @@ menu_main () {
             ;;
         *)
             echo -e "\e[31mOpção inválida!\e[0m"
-            read -n 1 -p "Pressione Enter para continuar..." enter
+            to_continue
             return
             ;;
     esac

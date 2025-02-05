@@ -32,14 +32,7 @@ first_exec() {
         
         touch exec
         sleep 5
-        read -n 1 -p "Pressione Enter para continuar..." enter
-
-        cd ..
-        source ./ocpi/menu_main.sh
-        # Início do loop
-        while true; do
-            menu_main
-        done
+        # read -n 1 -p "Pressione Enter para continuar..." enter
         
     else
         source ./menu_main.sh
@@ -52,4 +45,8 @@ first_exec() {
 
 first_exec
 
-
+source ./menu_main.sh
+# Início do loop
+while true; do
+    menu_main
+done
