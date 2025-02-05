@@ -37,8 +37,8 @@ menu_main () {
             ;;
         *)
             echo -e "\e[31mOpção inválida!\e[0m"
-            to_continue
-            return
+            # to_continue
+            # return
             ;;
     esac
 }
