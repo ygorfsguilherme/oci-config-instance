@@ -4,15 +4,6 @@
 # Script de configuração de instância OCI
 # Disponível para Ubuntu 22.04, preferencialmente a versão minimal
 #######################################################################################
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-source "$DIR/firewalld.sh"
-source "$DIR/ssl.sh"
-source "$DIR/show_menu.sh"
-source "$DIR/nginx.sh"
-source "$DIR/swap.sh"
-source "$DIR/banner.sh"
-
 
 # Função para checar e instalar pacotes
 check_and_install() {
@@ -58,6 +49,7 @@ first_exec
 #     echo "Não está no diretório ocpi."
 # fi
 
+source ./menu_main.sh
 # Início do loop
 while true; do
     menu_main
