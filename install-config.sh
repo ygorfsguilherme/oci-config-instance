@@ -43,7 +43,7 @@ first_exec() {
     fi
 }
 
-first_exec
+# first_exec
 
 source ./menu_main.sh
 # Início do loop

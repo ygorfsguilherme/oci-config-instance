@@ -14,7 +14,7 @@ to_continue() {
 
 menu_main () {
     show_menu
-    read -n 1 -p "Escolha uma opção: " option
+    read -p "Escolha uma opção: " option
     echo " "	
     echo $option
 
