@@ -20,7 +20,7 @@ first_exec() {
         check_and_install unzip
         check_and_install curl
         check_and_install git
-
+        check_and_install wgets
         echo "Instalação de dependências concluída."
 
         echo "Download do script de configuração..."
@@ -32,21 +32,16 @@ first_exec() {
         
         touch exec
         sleep 5
-        # read -n 1 -p "Pressione Enter para continuar..." enter
+
+        echo "Para da início o script de configuração, execute o comando:"
+        echo "cd ocpi"
+        echo "bash ./start_app.sh"
+        read -n 1 -p "Pressione Enter para continuar..." enter
         
     else
-        source ./menu_main.sh
-        # Início do loop
-        while true; do
-            menu_main
-        done
+        echo "O script já foi executado."
+        read -n 1 -p "Pressione Enter para continuar..." enter
     fi
 }
 
 first_exec
-
-source ./menu_main.sh
-# Início do loop
-while true; do
-    menu_main
-done
